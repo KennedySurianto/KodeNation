@@ -58,6 +58,33 @@ question_text
 created_at
 updated_at
 
+
+
+Users ↔ Courses: One-to-Many (A user can be an instructor for many courses, but a course has one instructor).
+Courses ↔ Categories: Many-to-Many (A course can belong to many categories, and a category can have many courses).
+Courses ↔ Lessons: One-to-Many (A course can have many lessons, but a lesson belongs to one course).
+Courses ↔ Enrollments: One-to-Many (A course can have many enrollments, but an enrollment is for one course).
+Users ↔ Enrollments: One-to-Many (A student can enroll in many courses, but an enrollment belongs to one student).
+Courses ↔ Quizzes: One-to-Many (A course can have many quizzes, but a quiz belongs to one course).
+Quizzes ↔ Questions: One-to-Many (A quiz can have many questions, but a question belongs to one quiz).
+Questions ↔ Answers: One-to-Many (A question can have many answers, but an answer belongs to one question).
+Quizzes ↔ Submissions: One-to-Many (A quiz can have many submissions, but a submission belongs to one quiz).
+Users ↔ Submissions: One-to-Many (A student can submit many quizzes, but a submission belongs to one student).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Answers:
 id
 question_id
