@@ -21,7 +21,7 @@ class CourseCategorySeeder extends Seeder
         Course::all()->each(function ($course) use ($categories) {
             // Attach each course to 1-3 random categories
             $course->categories()->attach(
-                $categories->random(rand(1, 3))->pluck('id')->toArray()
+                $categories->random(rand(1, 2))->pluck('id')->toArray()
             );
         });
     }

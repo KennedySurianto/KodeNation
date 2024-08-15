@@ -30,6 +30,7 @@ Route::controller(AuthController::class)->group(function() {
     Route::post('/register', 'register')->name('register.post');
 });
 Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
+Route::get('/category/{id}', [CourseController::class, 'category'])->name('courses.category');
 
 // Protected Routes
 Route::middleware(['auth'])->group(function () {

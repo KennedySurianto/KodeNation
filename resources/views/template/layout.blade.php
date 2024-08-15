@@ -12,6 +12,38 @@
         body {
             background-color: #36393e;
         }
+
+        .pagination {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        }
+
+        .pagination .page-item .page-link {
+            background-color: #343a40;
+            color: #fff;
+            border: 1px solid #495057;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .pagination .page-item .page-link:hover {
+            background-color: #495057;
+            color: #fff;
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .pagination .page-item.disabled .page-link {
+            background-color: #343a40;
+            color: #6c757d;
+            border-color: #495057;
+        }
     </style>
     @stack('styles')
 </head>
@@ -32,34 +64,35 @@
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     @if (Auth::check())
-                        @if(Auth::user()->role === 'admin')
-                            <li><a href="{{ route('admin.instructors.manage') }}" class="nav-link px-2 text-white">Manage
-                                    Instructors</a></li>
-                            <li><a href="{{ route('admin.courses.manage') }}" class="nav-link px-2 text-white">Manage Courses</a></li>
-                            <li><a href="{{ route('admin.students.manage') }}" class="nav-link px-2 text-white">Manage Students</a>
-                            </li>
-                        @elseif (Auth::user()->role === 'instructor')
-                            <li><a href="{{ route('courses.index') }}" class="nav-link px-2 text-white">Manage Courses</a></li>
-                            <li><a href="{{ route('students.index') }}" class="nav-link px-2 text-white">Manage Students</a>
-                            </li>
-                        @elseif (Auth::user()->role === 'student')
-                            <li><a href="{{ route('courses.index') }}" class="nav-link px-2 text-white">Browse Courses</a></li>
-                            <li><a href="{{ route('student.courses') }}" class="nav-link px-2 text-white">My Courses</a></li>
-                        @endif
+                    @if(Auth::user()->role === 'admin')
+                    <li><a href="{{ route('admin.instructors.manage') }}" class="nav-link px-2 text-white">Manage
+                            Instructors</a></li>
+                    <li><a href="{{ route('admin.courses.manage') }}" class="nav-link px-2 text-white">Manage
+                            Courses</a></li>
+                    <li><a href="{{ route('admin.students.manage') }}" class="nav-link px-2 text-white">Manage
+                            Students</a>
+                    </li>
+                    @elseif (Auth::user()->role === 'instructor')
+                    <li><a href="{{ route('courses.index') }}" class="nav-link px-2 text-white">Manage Courses</a></li>
+                    <li><a href="{{ route('students.index') }}" class="nav-link px-2 text-white">Manage Students</a>
+                    </li>
+                    @elseif (Auth::user()->role === 'student')
+                    <li><a href="{{ route('courses.index') }}" class="nav-link px-2 text-white">Browse Courses</a></li>
+                    <li><a href="{{ route('student.courses') }}" class="nav-link px-2 text-white">My Courses</a></li>
+                    @endif
                     @else
-                        <li><a href="{{ route('courses.index') }}" class="nav-link px-2 text-white">Browse Courses</a></li>
+                    <li><a href="{{ route('courses.index') }}" class="nav-link px-2 text-white">Browse Courses</a></li>
                     @endif
                 </ul>
 
                 <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                    <input type="search" class="form-control" placeholder="Search..."
-                        aria-label="Search">
+                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
                 </form>
 
                 @if(Auth::check())
                 <div class="dropdown text-end">
-                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                     </a>
                     <ul class="dropdown-menu text-small">
